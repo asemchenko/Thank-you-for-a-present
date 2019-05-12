@@ -1,12 +1,13 @@
 package example.company.presentator;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
                     showUserProfile();
                 } else {
                     Log.w("auth", "createAccount:fail", task.getException());
-                    // TODO update UI here
+                    Toast toast = Toast.makeText(getApplicationContext(), "An error occurred: " + task.getException().getMessage(), Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
         });
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 } else {
                     Log.w("auth", "singIn:fail.", task.getException());
+                    Toast toast = Toast.makeText(getApplicationContext(), "Invalid email/password", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });
