@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        if (auth.getCurrentUser() != null) { // user has already signed in - skipping this activity
+            showUserProfile();
+            finish();
+        }
+
         findViewById(R.id.signUpButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Log.d("auth", "signIn:success. User successfully signed in");
                     showUserProfile();
+                    finish();
                 } else {
                     Log.w("auth", "singIn:fail.", task.getException());
                 }
