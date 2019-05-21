@@ -1,6 +1,5 @@
 package com.example.presentator.model.entities;
 
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -67,8 +66,7 @@ public class Gift {
     public void setPresentImageURL(String presentImageURL) {
         this.presentImageURL = presentImageURL;
     }
-
-
+    
     public String stringCreatedDate() {
         SimpleDateFormat.getInstance();
         DateFormat dateFormat = SimpleDateFormat.getInstance();// FIXME new SimpleDateFormat("yyyy-mm-dd hh:mm");
