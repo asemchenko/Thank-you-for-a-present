@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.presentator.R;
-import com.example.presentator.view.NewsFeed;
+import com.example.presentator.view.PresentAdding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,10 +31,10 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initWidgetFields() {
-        emailEt = findViewById(R.id.sign_in_et_email);
-        passwordEt = findViewById(R.id.sign_up_et_password);
+        emailEt = findViewById(R.id.presentName);
+        passwordEt = findViewById(R.id.description);
         signInBtn = findViewById(R.id.btn_sign_in);
-        signUpBtn = findViewById(R.id.sign_in_btn_sign_up);
+        signUpBtn = findViewById(R.id.addPresentButton);
     }
 
     private void bindButtons() {
@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     private void goToFeed() {
-        Intent intent = new Intent(getApplicationContext(), NewsFeed.class);
+        Intent intent = new Intent(getApplicationContext(), PresentAdding.class);
         startActivity(intent);
         finish();
     }
