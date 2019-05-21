@@ -5,6 +5,7 @@ public class User {
     private String nick;
     private Gender gender;
     private String imageURL;
+    private String mail;
 
     public User(String name, String nick, Gender gender) {
         this.name = name;
@@ -45,6 +46,14 @@ public class User {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public enum Gender {MALE, FEMALE}

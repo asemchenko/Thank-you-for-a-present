@@ -68,6 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
         String username = usernameEt.getText().toString().trim();
         String email = emailEt.getText().toString().trim();
         User user = new User(fullName, username, gender);
+        user.setMail(email);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
