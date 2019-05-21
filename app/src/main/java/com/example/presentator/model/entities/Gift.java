@@ -28,6 +28,9 @@ public class Gift {
         this.creationDate = new Date().getTime();
     }
 
+    public Gift() {
+    }
+
     public String getPresentName() {
         return presentName;
     }

@@ -34,20 +34,16 @@ public class NewsFeed extends AppCompatActivity {
         setContentView(R.layout.activity_news_feed);
         initFields();
         initRecyclerView();
-
-
-
-/*
-        Gift gift = new Gift("Bicycle", "Fast mountain bicycle", "asdf", "https://www.google.com/favicon.icon");
-        String curUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        db.child("gifts").child(curUserUid).push().setValue(gift);
-        db.child("friends").child(curUserUid).push().setValue(curUserUid);
-        db.child("friends").child(curUserUid).push().setValue(curUserUid);
-        db.child("friends").child(curUserUid).push().setValue(curUserUid);*/
-
-//        startObserveFriendEvents();
+        // FIXME remove operator below. Just for testing purposes
+        findViewById(R.id.news_feed_btn1).setOnClickListener(view -> {
+            Gift gift = new Gift("Трактор",
+                    "Хочу себе трактор чтобы на нем можно было уехать за границу",
+                    "1/100500",
+                    "https://memepedia.ru/wp-content/uploads/2017/04/76965_original-1.jpg");
+            db.child("gifts").child("7Du7T6NbLyO1XVEIUyYB3hzLkz22").push().setValue(gift);
+        });
+        startObserveFriendEvents();
     }
-
 
     private void initFields() {
         // TODO вынеси все поля сюда
@@ -80,11 +76,11 @@ public class NewsFeed extends AppCompatActivity {
     }
 
     private void subscribeFriend(final String friendUid) {
-        db.child("users").child(friendUid).addListenerForSingleValueEvent(new ValueEventListener() {
+        db.child("users_new").child(friendUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User friend = dataSnapshot.getValue(User.class);
-                subscribeForFriend(friend, friendUid);
+                User friendInfo = dataSnapshot.getValue(User.class);
+                subscribeForFriend(friendInfo, friendUid);
             }
 
             @Override
@@ -100,12 +96,16 @@ public class NewsFeed extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Gift gift = dataSnapshot.getValue(Gift.class);
-                newsAdapter.addItem(new News(gift, friend));
+                String giftId = dataSnapshot.getKey();
+                newsAdapter.addItem(new News(gift, friend, giftId));
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                Gift gift = dataSnapshot.getValue(Gift.class);
+                String giftId = dataSnapshot.getKey();
+                News newNews = new News(gift, friend, giftId);
+                newsAdapter.updateItem(newNews);
             }
 
             @Override
