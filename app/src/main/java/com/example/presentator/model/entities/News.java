@@ -1,50 +1,34 @@
 package com.example.presentator.model.entities;
 
 
+import java.util.Date;
+
 public class News {
-    private User user;
-    private long id;
+    // FIXME надо сделать чтоб оно не сохранялось в БД, а выставлялось уже после выгрузки из БД
+    private String userUid;
     private String presentName;
+    private String description;
     private String moneyCollected;
-    private String creationDate;
-
-    public String getPresentImageURL() {
-        return presentImageURL;
-    }
-
-    public void setPresentImageURL(String presentImageURL) {
-        this.presentImageURL = presentImageURL;
-    }
-
+    private long creationDate;
     private String presentImageURL;
 
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public News(User user, long id, String presentName, String moneyCollected,
-                String creationDate, String presentImageURL) {
-        this.user = user;
-        this.id = id;
+    public News(String userUid, String presentName, String moneyCollected, String presentImageURL) {
+        this.userUid = userUid;
         this.presentName = presentName;
         this.moneyCollected = moneyCollected;
-        this.creationDate = creationDate;
         this.presentImageURL = presentImageURL;
+        this.creationDate = new Date().getTime();
     }
 
     public News() {
     }
 
-    public User getUser() {
-        return user;
+    public String getUserUid() {
+        return userUid;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
     }
 
     public String getPresentName() {
@@ -63,11 +47,19 @@ public class News {
         this.moneyCollected = moneyCollected;
     }
 
-    public long getId() {
-        return id;
+    public long getCreationDate() {
+        return creationDate;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCreationDate(long creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getPresentImageURL() {
+        return presentImageURL;
+    }
+
+    public void setPresentImageURL(String presentImageURL) {
+        this.presentImageURL = presentImageURL;
     }
 }
