@@ -14,6 +14,7 @@
         <activity android:name="com.example.presentator.view.auth.SignUpActivity" />
         <activity android:name="com.example.presentator.view.NewsItem" />
         <activity android:name="com.example.presentator.view.Profile" />
+        <activity android:name="com.example.presentator.view.PresentAdding" />
         <activity android:name="com.example.presentator.view.auth.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

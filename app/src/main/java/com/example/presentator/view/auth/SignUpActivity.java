@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         fullNameEt = findViewById(R.id.sign_up_et_full_name);
         usernameEt = findViewById(R.id.sign_up_et_username);
         emailEt = findViewById(R.id.sign_up_et_email);
-        passwordEt = findViewById(R.id.sign_up_et_password);
+        passwordEt = findViewById(R.id.description);
         passwordConfirmationEt = findViewById(R.id.sign_up_et_password_confirmation);
         genderRadioGroup = findViewById(R.id.sign_up_radio_group_gender);
         signUpBtn = findViewById(R.id.sign_up_btn_sign_up);
