@@ -68,13 +68,12 @@ public class SignUpActivity extends AppCompatActivity {
         String username = usernameEt.getText().toString().trim();
         String email = emailEt.getText().toString().trim();
         User user = new User(fullName, username, gender);
-        user.setMail(email);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 FirebaseUser currentUser = auth.getCurrentUser();
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference users = db.getReference("users");
+                DatabaseReference users = db.getReference("users_new"); // FIXME tmp rename
                 users.child(currentUser.getUid()).setValue(user);
                 goToFeed();
             } else {

@@ -14,11 +14,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
-    private List<News> newsList = new ArrayList<>();
+    private List<News> newsList = new LinkedList<>();
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
         private ImageView userImageView;
@@ -40,13 +41,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         public void bind(News news) {
             nickTextView.setText(news.getUser().getNick());
-            moneyCollectedTextView.setText(news.getMoneyCollected());
-            presentNameTextView.setText(news.getPresentName());
-            creationDateTextView.setText(news.getCreationDate());
+            moneyCollectedTextView.setText(news.getGift().getMoneyCollected());
+            presentNameTextView.setText(news.getGift().getPresentName());
+            creationDateTextView.setText(news.getGift().stringCreatedDate());
             Picasso.with(itemView.getContext()).load(news.getUser().getImageURL()).into(userImageView);
-            Picasso.with(itemView.getContext()).load(news.getPresentImageURL()).into(presentImageView);
+            Picasso.with(itemView.getContext()).load(news.getGift().getPresentImageURL()).into(presentImageView);
 
         }
+    }
+
+    public void addItem(News news) {
+        newsList.add(0, news);
+        notifyDataSetChanged();
     }
 
 

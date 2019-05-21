@@ -1,22 +1,22 @@
 package com.example.presentator.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
     private String name;
     private String nick;
     private Gender gender;
     private String imageURL;
-    // FIXME удоли это поле
-    private String mail;
-    private List<String> friendsUIDs;
+
+    public User(String name, String nick, Gender gender, String imageURL) {
+        this.name = name;
+        this.nick = nick;
+        this.gender = gender;
+        this.imageURL = imageURL;
+    }
 
     public User(String name, String nick, Gender gender) {
         this.name = name;
         this.nick = nick;
         this.gender = gender;
-        this.friendsUIDs = new ArrayList<>();
     }
 
     public User() {
@@ -54,15 +54,5 @@ public class User {
         this.imageURL = imageURL;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public enum Gender {MALE, FEMALE}
-
-    ;
 }
