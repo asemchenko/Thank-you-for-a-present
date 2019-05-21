@@ -1,4 +1,4 @@
-package com.example.testlogin.model;
+package com.example.presentator.model.entities;
 
 public class User {
     private String name;

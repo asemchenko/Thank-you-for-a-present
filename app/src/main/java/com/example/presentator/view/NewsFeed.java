@@ -1,13 +1,14 @@
-package com.example.testlogin;
+package com.example.presentator.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.testlogin.adapter.NewsAdapter;
-import com.example.testlogin.model.News;
-import com.example.testlogin.model.User;
+import com.example.presentator.R;
+import com.example.presentator.adapter.NewsAdapter;
+import com.example.presentator.model.entities.News;
+import com.example.presentator.model.entities.User;
 
 import java.util.Arrays;
 import java.util.Collection;

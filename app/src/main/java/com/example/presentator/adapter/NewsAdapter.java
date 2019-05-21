@@ -1,4 +1,4 @@
-package com.example.testlogin.adapter;
+package com.example.presentator.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.testlogin.R;
-import com.example.testlogin.model.News;
+import com.example.presentator.R;
+import com.example.presentator.model.entities.News;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

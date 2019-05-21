@@ -1,14 +1,16 @@
-package com.example.testlogin;
+package com.example.presentator.view.auth;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SignupForm extends AppCompatActivity {
+import com.example.presentator.R;
+
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_form);
-        getSupportActionBar().setTitle("Signup Form");
+        getSupportActionBar().setTitle("Sign up");
     }
 }
