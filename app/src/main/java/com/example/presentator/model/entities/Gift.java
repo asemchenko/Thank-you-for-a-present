@@ -10,6 +10,7 @@ public class Gift {
     private String moneyCollected;
     private long creationDate;
     private String presentImageURL;
+    private String giftedByUserUid;
 
     public Gift(String presentName, String description, String moneyCollected, long creationDate, String presentImageURL) {
         this.presentName = presentName;
@@ -74,5 +75,13 @@ public class Gift {
         SimpleDateFormat.getInstance();
         DateFormat dateFormat = SimpleDateFormat.getInstance();// FIXME new SimpleDateFormat("yyyy-mm-dd hh:mm");
         return dateFormat.format(new Date(creationDate));
+    }
+
+    public String getGiftedByUserUid() {
+        return giftedByUserUid;
+    }
+
+    public void setGiftedByUserUid(String giftedByUserUid) {
+        this.giftedByUserUid = giftedByUserUid;
     }
 }

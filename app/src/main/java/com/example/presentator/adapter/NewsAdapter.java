@@ -1,15 +1,19 @@
 package com.example.presentator.adapter;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.presentator.R;
 import com.example.presentator.model.entities.News;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collection;
@@ -80,7 +84,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         private TextView creationDateTextView;
         private TextView presentNameTextView;
         private ImageView presentImageView;
-        private TextView moneyCollectedTextView;
+        private TextView descriptionTextView;
+        private Button giftThisButton;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
@@ -89,16 +94,32 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             creationDateTextView = itemView.findViewById(R.id.creation_date_text_view);
             presentNameTextView = itemView.findViewById(R.id.present_name_text_view);
             presentImageView = itemView.findViewById(R.id.present_image_view);
-            moneyCollectedTextView = itemView.findViewById(R.id.money_collected_text_view);
+            descriptionTextView = itemView.findViewById(R.id.news_item_tw_description);
+            giftThisButton = itemView.findViewById(R.id.news_item_btn_gift);
         }
 
         public void bind(News news) {
             nickTextView.setText(news.getUser().getNick());
-            moneyCollectedTextView.setText(news.getGift().getMoneyCollected());
+            descriptionTextView.setText(news.getGift().getDescription());
             presentNameTextView.setText(news.getGift().getPresentName());
             creationDateTextView.setText(news.getGift().stringCreatedDate());
             Picasso.with(itemView.getContext()).load(news.getUser().getImageURL()).into(userImageView);
             Picasso.with(itemView.getContext()).load(news.getGift().getPresentImageURL()).into(presentImageView);
+            if (news.getGift().getGiftedByUserUid() != null) {
+                disableGiftButton();
+            }
+            giftThisButton.setOnClickListener(view -> {
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                news.getGift().setGiftedByUserUid(uid);
+                FirebaseDatabase.getInstance().getReference().child("gifts").child(news.getUserId()).child(news.getGiftId()).setValue(news.getGift());
+            });
+        }
+
+
+        private void disableGiftButton() {
+            giftThisButton.setText("Already gifted");
+            giftThisButton.setBackgroundColor(Color.parseColor("#9e9e9e"));
+            giftThisButton.setEnabled(false);
         }
     }
 }

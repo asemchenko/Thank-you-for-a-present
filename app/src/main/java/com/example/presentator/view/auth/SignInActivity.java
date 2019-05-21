@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.presentator.R;
+import com.example.presentator.view.NewsFeed;
 import com.example.presentator.view.PresentAdding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,7 +54,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     private void goToFeed() {
-        Intent intent = new Intent(getApplicationContext(), PresentAdding.class);
+        Intent intent = new Intent(getApplicationContext(), NewsFeed.class);
         startActivity(intent);
         finish();
     }

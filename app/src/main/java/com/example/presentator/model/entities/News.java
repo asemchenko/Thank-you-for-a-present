@@ -5,12 +5,14 @@ import java.util.Objects;
 public class News {
     private String giftId;
     private Gift gift;
+    private String userId;
     private User user;
 
-    public News(Gift gift, User user, String giftId) {
+    public News(Gift gift, User user, String giftId, String userId) {
         this.gift = gift;
         this.user = user;
         this.giftId = giftId;
+        this.userId = userId;
     }
 
     public Gift getGift() {
@@ -35,6 +37,14 @@ public class News {
 
     public void setGiftId(String giftId) {
         this.giftId = giftId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,6 +43,8 @@ public class NewsFeed extends AppCompatActivity {
                     "https://memepedia.ru/wp-content/uploads/2017/04/76965_original-1.jpg");
             db.child("gifts").child("7Du7T6NbLyO1XVEIUyYB3hzLkz22").push().setValue(gift);
         });
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(newsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        newsRecyclerView.addItemDecoration(dividerItemDecoration);
         startObserveFriendEvents();
     }
 
@@ -97,14 +100,14 @@ public class NewsFeed extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Gift gift = dataSnapshot.getValue(Gift.class);
                 String giftId = dataSnapshot.getKey();
-                newsAdapter.addItem(new News(gift, friend, giftId));
+                newsAdapter.addItem(new News(gift, friend, giftId, friendUid));
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Gift gift = dataSnapshot.getValue(Gift.class);
                 String giftId = dataSnapshot.getKey();
-                News newNews = new News(gift, friend, giftId);
+                News newNews = new News(gift, friend, giftId, friendUid);
                 newsAdapter.updateItem(newNews);
             }
 
