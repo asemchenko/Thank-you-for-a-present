@@ -36,7 +36,8 @@ public class News {
         this.presentImageURL = presentImageURL;
     }
 
-    public News(){}
+    public News() {
+    }
 
     public User getUser() {
         return user;

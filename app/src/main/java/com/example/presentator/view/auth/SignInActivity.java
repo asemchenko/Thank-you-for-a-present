@@ -23,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_form);
+        setContentView(R.layout.activity_sign_in_form);
         getSupportActionBar().setTitle("Login Form");
         auth = FirebaseAuth.getInstance();
         initWidgetFields();
@@ -31,10 +31,10 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initWidgetFields() {
-        emailEt = findViewById(R.id.et_email);
-        passwordEt = findViewById(R.id.et_password);
+        emailEt = findViewById(R.id.sign_in_et_email);
+        passwordEt = findViewById(R.id.sign_up_et_password);
         signInBtn = findViewById(R.id.btn_sign_in);
-        signUpBtn = findViewById(R.id.btn_sign_up);
+        signUpBtn = findViewById(R.id.sign_in_btn_sign_up);
     }
 
     private void bindButtons() {
@@ -64,8 +64,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-        String email = emailEt.getText().toString();
-        String password = passwordEt.getText().toString();
+        String email = emailEt.getText().toString().trim();
+        String password = passwordEt.getText().toString().trim();
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 goToFeed();

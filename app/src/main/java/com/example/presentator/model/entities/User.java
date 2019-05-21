@@ -3,14 +3,16 @@ package com.example.presentator.model.entities;
 public class User {
     private String name;
     private String nick;
+    private Gender gender;
     private String imageURL;
 
-    public String getImageURL() {
-        return imageURL;
+    public User(String name, String nick, Gender gender) {
+        this.name = name;
+        this.nick = nick;
+        this.gender = gender;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public User() {
     }
 
     public String getName() {
@@ -29,5 +31,23 @@ public class User {
         this.nick = nick;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
 
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public enum Gender {MALE, FEMALE}
+
+    ;
 }

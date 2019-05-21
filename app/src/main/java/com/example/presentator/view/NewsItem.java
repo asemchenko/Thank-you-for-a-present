@@ -1,7 +1,7 @@
 package com.example.presentator.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.presentator.R;
 

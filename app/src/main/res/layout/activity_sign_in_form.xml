@@ -23,51 +23,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-    <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/sign_in_et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="text"
-        android:textSize="15sp"
+        android:textSize="@dimen/text_usual"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/sign_up_et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="@dimen/text_usual"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_et_email" />
 
     <Button
         android:id="@+id/btn_sign_in"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        style="@style/UsualButton"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/button_rounded"
         android:text="Sign In"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+        android:textColorLink="#90b140"
+        app:layout_constraintBottom_toTopOf="@+id/sign_in_btn_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_sign_up"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/sign_in_btn_sign_up"
+        style="@style/UsualButton"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/button_rounded"
         android:text="Sign Up"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_sign_in" />
 </android.support.constraint.ConstraintLayout>

@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder>{
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
     private List<News> newsList = new ArrayList<>();
 
-    class NewsViewHolder extends RecyclerView.ViewHolder{
+    class NewsViewHolder extends RecyclerView.ViewHolder {
         private ImageView userImageView;
         private TextView nickTextView;
         private TextView creationDateTextView;
@@ -28,17 +28,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         private ImageView presentImageView;
         private TextView moneyCollectedTextView;
 
-        public NewsViewHolder(View itemView){
+        public NewsViewHolder(View itemView) {
             super(itemView);
             userImageView = itemView.findViewById(R.id.profile_image_view);
-            nickTextView= itemView.findViewById(R.id.author_nick_text_view);
-            creationDateTextView= itemView.findViewById(R.id.creation_date_text_view);
-            presentNameTextView= itemView.findViewById(R.id.present_name_text_view);
+            nickTextView = itemView.findViewById(R.id.author_nick_text_view);
+            creationDateTextView = itemView.findViewById(R.id.creation_date_text_view);
+            presentNameTextView = itemView.findViewById(R.id.present_name_text_view);
             presentImageView = itemView.findViewById(R.id.present_image_view);
             moneyCollectedTextView = itemView.findViewById(R.id.money_collected_text_view);
         }
 
-        public void bind(News news){
+        public void bind(News news) {
             nickTextView.setText(news.getUser().getNick());
             moneyCollectedTextView.setText(news.getMoneyCollected());
             presentNameTextView.setText(news.getPresentName());
@@ -50,13 +50,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
 
-
-    public void setItems(Collection<News> newsCollection){
+    public void setItems(Collection<News> newsCollection) {
         newsList.addAll(newsCollection);
         notifyDataSetChanged();
     }
 
-    public void clearItems(){
+    public void clearItems() {
         newsList.clear();
         notifyDataSetChanged();
     }
