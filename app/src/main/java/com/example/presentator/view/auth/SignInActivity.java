@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in_form);
-        getSupportActionBar().setTitle("Login Form");
+        getSupportActionBar().setTitle("Join Presentator");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
         auth = FirebaseAuth.getInstance();
         initWidgetFields();

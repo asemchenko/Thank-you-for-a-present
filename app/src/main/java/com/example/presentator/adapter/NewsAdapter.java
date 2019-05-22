@@ -100,7 +100,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         }
 
         public void bind(News news) {
-            nickTextView.setText(news.getUser().getNick());
+            nickTextView.setText(news.getUser().getName());
             descriptionTextView.setText(news.getGift().getDescription());
             presentNameTextView.setText(news.getGift().getPresentName());
             creationDateTextView.setText(news.getGift().stringCreatedDate());
