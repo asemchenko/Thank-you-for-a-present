@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,9 +17,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -66,6 +68,9 @@ public class PresentAdding extends AppCompatActivity {
     private String messageUrl;
     private DatabaseReference curGiftPush;
 
+
+    private ImageButton goToFeedImageButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +86,10 @@ public class PresentAdding extends AppCompatActivity {
                 showPictureDialog();
             }
         });
-
+        goToFeedImageButton = findViewById(R.id.present_add_btn_feed);
+        goToFeedImageButton.setOnClickListener(view -> {
+            Menu.goToFeed(this);
+        });
         addPresentButton = findViewById(R.id.addPresentButton);
 
         addPresentButton.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +102,7 @@ public class PresentAdding extends AppCompatActivity {
                 uploadFile();
             }
         });
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
     }
 
     private void setGiftInfo(String downloadUri) {
@@ -250,8 +258,9 @@ public class PresentAdding extends AppCompatActivity {
                         }
                     }
 
+
                     @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                    public void onPermissionRationaleShouldBeShown(List<com.karumi.dexter.listener.PermissionRequest> permissions, PermissionToken token) {
                         token.continuePermissionRequest();
                     }
                 }).

@@ -14,19 +14,23 @@
         tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/addPresent"
+            android:id="@+id/present_add_addPresent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/colorAccent"
             android:scaleType="fitCenter"
+            android:padding="10dp"
             app:srcCompat="@drawable/add_present_icon_button" />
 
         <ImageButton
-            android:id="@+id/newsButton"
+            android:id="@+id/present_add_btn_feed"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:background="@color/colorAccent"
             app:srcCompat="@drawable/news_icon_button" />
 
         <ImageButton
@@ -34,7 +38,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:padding="10dp"
             android:scaleType="fitCenter"
+            android:background="@color/colorAccent"
             app:srcCompat="@drawable/account_icon_button" />
 
     </LinearLayout>

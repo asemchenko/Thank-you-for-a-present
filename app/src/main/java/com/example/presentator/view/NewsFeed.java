@@ -1,6 +1,9 @@
 package com.example.presentator.view;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,11 +44,12 @@ public class NewsFeed extends AppCompatActivity {
         initRecyclerView();
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(newsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         newsRecyclerView.addItemDecoration(dividerItemDecoration);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
         startObserveFriendEvents();
     }
 
     private void bindButtons() {
-        newsButton.setOnClickListener(view -> Menu.goToFeed(this));
+        //newsButton.setOnClickListener(view -> Menu.goToFeed(this));
         addPresentBtn.setOnClickListener(view -> Menu.goToGiftAdding(this));
     }
 
@@ -54,7 +58,7 @@ public class NewsFeed extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference();
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         addPresentBtn = findViewById(R.id.addPresentButton);
-        newsButton = findViewById(R.id.newsButton);
+        newsButton = findViewById(R.id.present_add_btn_feed);
     }
 
     private void initRecyclerView() {
