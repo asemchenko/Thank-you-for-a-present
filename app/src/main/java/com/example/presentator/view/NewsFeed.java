@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageButton;
 
 import com.example.presentator.R;
 import com.example.presentator.adapter.NewsAdapter;
@@ -28,30 +29,32 @@ public class NewsFeed extends AppCompatActivity {
     private RecyclerView newsRecyclerView;
     private NewsAdapter newsAdapter;
     private DatabaseReference db;
+    private ImageButton addPresentBtn;
+    private ImageButton newsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
         initFields();
+        bindButtons();
         initRecyclerView();
-        // FIXME remove operator below. Just for testing purposes
-        findViewById(R.id.news_feed_btn1).setOnClickListener(view -> {
-            Gift gift = new Gift("Трактор",
-                    "Хочу себе трактор чтобы на нем можно было уехать за границу",
-                    "1/100500",
-                    "https://memepedia.ru/wp-content/uploads/2017/04/76965_original-1.jpg");
-            db.child("gifts").child("7Du7T6NbLyO1XVEIUyYB3hzLkz22").push().setValue(gift);
-        });
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(newsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         newsRecyclerView.addItemDecoration(dividerItemDecoration);
         startObserveFriendEvents();
+    }
+
+    private void bindButtons() {
+        newsButton.setOnClickListener(view -> Menu.goToFeed(this));
+        addPresentBtn.setOnClickListener(view -> Menu.goToGiftAdding(this));
     }
 
     private void initFields() {
         // TODO вынеси все поля сюда
         db = FirebaseDatabase.getInstance().getReference();
         newsRecyclerView = findViewById(R.id.news_recycler_view);
+        addPresentBtn = findViewById(R.id.addPresentButton);
+        newsButton = findViewById(R.id.newsButton);
     }
 
     private void initRecyclerView() {
@@ -127,5 +130,6 @@ public class NewsFeed extends AppCompatActivity {
             }
         });
     }
+
 
 }

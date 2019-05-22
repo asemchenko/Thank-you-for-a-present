@@ -1,5 +1,6 @@
 package com.example.presentator.adapter;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -105,8 +106,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             creationDateTextView.setText(news.getGift().stringCreatedDate());
             Picasso.with(itemView.getContext()).load(news.getUser().getImageURL()).into(userImageView);
             Picasso.with(itemView.getContext()).load(news.getGift().getPresentImageURL()).into(presentImageView);
+
             if (news.getGift().getGiftedByUserUid() != null) {
                 disableGiftButton();
+            } else {
+                enableGiftButton();
             }
             giftThisButton.setOnClickListener(view -> {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -118,8 +122,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         private void disableGiftButton() {
             giftThisButton.setText("Already gifted");
-            giftThisButton.setBackgroundColor(Color.parseColor("#9e9e9e"));
             giftThisButton.setEnabled(false);
+            giftThisButton.setBackgroundResource(R.drawable.button_rounded_disabled);
+
+        }
+
+        private void enableGiftButton() {
+            giftThisButton.setText("Gift this");
+            giftThisButton.setBackgroundColor(Color.parseColor("#90B140"));
+            giftThisButton.setEnabled(true);
+            giftThisButton.setBackgroundResource(R.drawable.button_rounded);
         }
     }
 }

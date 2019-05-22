@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,7 +38,6 @@ import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.DexterError;
-import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
@@ -50,23 +50,17 @@ import java.util.List;
 
 public class PresentAdding extends AppCompatActivity {
 
+    private static final String IMAGE_DIRECTORY = "/demonuts";
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    StorageReference imageRef;
     private ImageView imageView;
     private Button addPresentButton;
-    private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
-
     private EditText presentName;
     private EditText description;
     private EditText urlPicture;
-
     private Uri mImageUri;
-
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-
-    StorageReference storageRef = storage.getReference();
-
-    StorageReference imageRef;
-
     private StorageTask mUploadTask;
 
     private String messageUrl;
@@ -110,7 +104,7 @@ public class PresentAdding extends AppCompatActivity {
                 "0/0",
                 downloadUri
         ));
-        Toast.makeText(getApplicationContext(), "Gift added successfully", Toast.LENGTH_SHORT).show();
+        Menu.goToFeed(this);
     }
 
     private void uploadFile() {

@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NewsFeed"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".view.NewsFeed">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/news_feed_btn1"
+        <ImageButton
+            android:id="@+id/addPresentButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button1" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/add_present_icon_button" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/newsButton"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Button2" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/news_icon_button" />
 
-        <Button
+        <ImageButton
+            android:id="@+id/accountButton"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Button3" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/accont_icon_button" />
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/news_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
