@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:id="@+id/profile_image_view"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="@dimen/text_small_margin"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/name_text_view"
+        style="@style/TextView.Primary.Bold"
+        android:layout_toEndOf="@+id/profile_image_view"
+        android:text="Name"
+
+        />
+
+    <TextView
+        android:id="@+id/gender_text_view"
+        style="@style/TextView.Secondary"
+        android:layout_marginStart="7dp"
+        android:layout_toEndOf="@+id/name_text_view"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Gender" />
+
+    <TextView
+        android:id="@+id/nick_text_view"
+        style="@style/TextView.Primary.Header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_text_view"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/profile_image_view"
+        android:text="Nick" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:background="@drawable/button_rounded2"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentEnd="true"
+
+        app:srcCompat="@drawable/tick_button" />
+
+
+</RelativeLayout>
