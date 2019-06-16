@@ -1,4 +1,4 @@
-package com.example.presentator.view;
+package com.example.presentator.modules.newsFeed;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

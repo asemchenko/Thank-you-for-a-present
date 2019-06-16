@@ -1,4 +1,4 @@
-package com.example.presentator.view.auth;
+package com.example.presentator.modules.auth.signUp;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.presentator.R;
 import com.example.presentator.model.entities.User;
-import com.example.presentator.view.NewsFeed;
+import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -115,7 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void goToFeed() {
-        Intent intent = new Intent(this, NewsFeed.class);
+        Intent intent = new Intent(this, NewsFeedActivity.class);
         startActivity(intent);
         finish();
     }

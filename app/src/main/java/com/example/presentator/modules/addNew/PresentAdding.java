@@ -1,4 +1,4 @@
-package com.example.presentator.view;
+package com.example.presentator.modules.addNew;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.presentator.R;
+import com.example.presentator.common.Menu;
 import com.example.presentator.model.entities.Gift;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;

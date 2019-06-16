@@ -1,9 +1,8 @@
-package com.example.presentator.view;
+package com.example.presentator.modules.newsFeed;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +13,10 @@ import android.util.Log;
 import android.widget.ImageButton;
 
 import com.example.presentator.R;
-import com.example.presentator.adapter.NewsAdapter;
 import com.example.presentator.model.entities.Gift;
 import com.example.presentator.model.entities.News;
 import com.example.presentator.model.entities.User;
+import com.example.presentator.common.Menu;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -27,7 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class NewsFeed extends AppCompatActivity {
+public class NewsFeedActivity extends AppCompatActivity {
 
     private RecyclerView newsRecyclerView;
     private NewsAdapter newsAdapter;
@@ -80,7 +79,7 @@ public class NewsFeed extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("NewsFeed", "startObserveFriendsEvents: database error occurred", databaseError.toException());
+                Log.e("NewsFeedActivity", "startObserveFriendsEvents: database error occurred", databaseError.toException());
             }
         });
     }
@@ -95,7 +94,7 @@ public class NewsFeed extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("NewsFeed", "subscribeFriend: database error occurred", databaseError.toException());
+                Log.e("NewsFeedActivity", "subscribeFriend: database error occurred", databaseError.toException());
             }
         });
 

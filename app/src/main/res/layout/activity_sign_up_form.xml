@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".view.auth.SignUpActivity">
+    tools:context=".modules.auth.signUp.SignUpActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
