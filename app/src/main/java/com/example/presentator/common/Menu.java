@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
-import com.example.presentator.modules.addNew.PresentAdding;
+import com.example.presentator.modules.addNew.PresentAddingActivity;
 
 public class Menu {
     public static void goToFeed(AppCompatActivity a) {
@@ -14,7 +14,7 @@ public class Menu {
     }
 
     public static void goToGiftAdding(AppCompatActivity a) {
-        Intent intent = new Intent(a.getApplicationContext(), PresentAdding.class);
+        Intent intent = new Intent(a.getApplicationContext(), PresentAddingActivity.class);
         a.startActivity(intent);
         a.finish();
     }

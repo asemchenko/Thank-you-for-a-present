@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,17 +25,10 @@ import android.widget.Toast;
 import com.example.presentator.R;
 import com.example.presentator.common.Menu;
 import com.example.presentator.model.entities.Gift;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -51,25 +43,14 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-public class PresentAdding extends AppCompatActivity {
-
+public class PresentAddingActivity extends AppCompatActivity implements PresentAddingView {
     private static final String IMAGE_DIRECTORY = "/demonuts";
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef = storage.getReference();
-    StorageReference imageRef;
+    private PresentAddingController controller = new PresentAddingController(this);
     private ImageView imageView;
     private Button addPresentButton;
     private int GALLERY = 1, CAMERA = 2;
     private EditText presentName;
     private EditText description;
-    private EditText urlPicture;
-    private Uri mImageUri;
-    private StorageTask mUploadTask;
-
-    private String messageUrl;
-    private DatabaseReference curGiftPush;
-
-
     private ImageButton goToFeedImageButton;
 
     @Override
@@ -80,6 +61,9 @@ public class PresentAdding extends AppCompatActivity {
         requestMultiplePermissions();
 
         imageView = (ImageView) findViewById(R.id.picture);
+        presentName = findViewById(R.id.presentName);
+        description = findViewById(R.id.description);
+
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,52 +80,18 @@ public class PresentAdding extends AppCompatActivity {
         addPresentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference giftsRef = FirebaseDatabase.getInstance().getReference().child("gifts");
-                presentName = findViewById(R.id.presentName);
-                description = findViewById(R.id.description);
-                curGiftPush = giftsRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push();
-                uploadFile();
+                String presentNameString = presentName.getText().toString().trim();
+                String descriptionString = description.getText().toString().trim();
+                controller.addNewPresent(new Gift(presentNameString, descriptionString), getGiftImage());
             }
         });
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
     }
 
-    private void setGiftInfo(String downloadUri) {
-        curGiftPush.setValue(new Gift(
-                presentName.getText().toString().trim(),
-                description.getText().toString().trim(),
-                "0/0",
-                downloadUri
-        ));
-        Menu.goToFeed(this);
-    }
-
-    private void uploadFile() {
-        imageRef = storageRef.child(curGiftPush.getKey() + ".jpg");
+    private Bitmap getGiftImage() {
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                curGiftPush.removeValue();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                imageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        setGiftInfo(task.getResult().toString());
-                    }
-                });
-            }
-        });
+        return ((BitmapDrawable) imageView.getDrawable()).getBitmap();
     }
 
     private void showPictureDialog() {
@@ -156,7 +106,7 @@ public class PresentAdding extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
-                                choosePhotoFromGallary();
+                                choosePhotoFromGallery();
                                 break;
                             case 1:
                                 takePhotoFromCamera();
@@ -167,7 +117,7 @@ public class PresentAdding extends AppCompatActivity {
         pictureDialog.show();
     }
 
-    public void choosePhotoFromGallary() {
+    public void choosePhotoFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
@@ -192,12 +142,12 @@ public class PresentAdding extends AppCompatActivity {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
-                    Toast.makeText(PresentAdding.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PresentAddingActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
                     imageView.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Toast.makeText(PresentAdding.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PresentAddingActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -205,7 +155,7 @@ public class PresentAdding extends AppCompatActivity {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(thumbnail);
             saveImage(thumbnail);
-            Toast.makeText(PresentAdding.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PresentAddingActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -275,4 +225,8 @@ public class PresentAdding extends AppCompatActivity {
                 .check();
     }
 
+    @Override
+    public void finishAddingView() {
+        Menu.goToFeed(this);
+    }
 }

@@ -14,7 +14,7 @@
         <activity android:name=".modules.auth.signUp.SignUpActivity" />
         <activity android:name=".modules.newsFeed.NewsItem" />
         <activity android:name="com.example.presentator.deleteIt.Profile" />
-        <activity android:name=".modules.addNew.PresentAdding" />
+        <activity android:name=".modules.addNew.PresentAddingActivity" />
         <activity android:name=".modules.auth.signIn.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
