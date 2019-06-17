@@ -1,42 +1,26 @@
 package com.example.presentator.model.entities;
 
+import java.util.Objects;
 
 public class News {
+    private String giftId;
+    private Gift gift;
+    private String userId;
     private User user;
-    private long id;
-    private String presentName;
-    private String moneyCollected;
-    private String creationDate;
 
-    public String getPresentImageURL() {
-        return presentImageURL;
-    }
-
-    public void setPresentImageURL(String presentImageURL) {
-        this.presentImageURL = presentImageURL;
-    }
-
-    private String presentImageURL;
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public News(User user, long id, String presentName, String moneyCollected,
-                String creationDate, String presentImageURL) {
+    public News(Gift gift, User user, String giftId, String userId) {
+        this.gift = gift;
         this.user = user;
-        this.id = id;
-        this.presentName = presentName;
-        this.moneyCollected = moneyCollected;
-        this.creationDate = creationDate;
-        this.presentImageURL = presentImageURL;
+        this.giftId = giftId;
+        this.userId = userId;
     }
 
-    public News() {
+    public Gift getGift() {
+        return gift;
+    }
+
+    public void setGift(Gift gift) {
+        this.gift = gift;
     }
 
     public User getUser() {
@@ -47,27 +31,32 @@ public class News {
         this.user = user;
     }
 
-    public String getPresentName() {
-        return presentName;
+    public String getGiftId() {
+        return giftId;
     }
 
-    public void setPresentName(String presentName) {
-        this.presentName = presentName;
+    public void setGiftId(String giftId) {
+        this.giftId = giftId;
     }
 
-    public String getMoneyCollected() {
-        return moneyCollected;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setMoneyCollected(String moneyCollected) {
-        this.moneyCollected = moneyCollected;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return Objects.equals(giftId, news.giftId);
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(giftId);
     }
 }

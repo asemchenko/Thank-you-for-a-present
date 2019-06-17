@@ -6,11 +6,11 @@ public class User {
     private Gender gender;
     private String imageURL;
 
-    public User(String imageURL,String name, String nick, Gender gender) {
-        this.imageURL = imageURL;
+    public User(String name, String nick, Gender gender, String imageURL) {
         this.name = name;
         this.nick = nick;
         this.gender = gender;
+        this.imageURL = imageURL;
     }
 
     public User(String name, String nick, Gender gender) {
@@ -55,6 +55,4 @@ public class User {
     }
 
     public enum Gender {MALE, FEMALE}
-
-    ;
 }

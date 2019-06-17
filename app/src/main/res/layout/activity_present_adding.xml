@@ -4,29 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
-    android:padding="30dp"
-    tools:context=".view.auth.SignInActivity">
+    tools:context=".modules.auth.signIn.SignInActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/present_add_addPresent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            app:srcCompat="@drawable/add_present_icon_button" />
+
+        <ImageButton
+            android:id="@+id/present_add_btn_feed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:background="@color/colorAccent"
+            app:srcCompat="@drawable/news_icon_button" />
+
+        <ImageButton
+            android:id="@+id/accountButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:background="@color/colorAccent"
+            app:srcCompat="@drawable/account_icon_button" />
+
+    </LinearLayout>
+
 
     <ImageView
 
         android:id="@+id/picture"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="230dp"
+        android:layout_height="170dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/upload_icon"
+        android:scaleType="centerCrop"
+        android:src="@drawable/upload_photo_icon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
 
-        android:id="@+id/title"
+        android:id="@+id/presentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -34,7 +72,8 @@
         android:hint="Title"
         android:inputType="text"
         android:textSize="@dimen/text_usual"
-        app:layout_constraintTop_toBottomOf="@+id/picture" />
+        app:layout_constraintTop_toBottomOf="@+id/picture"
+        />
 
     <EditText
         android:id="@+id/description"
@@ -45,7 +84,7 @@
         android:hint="Description"
         android:inputType="text"
         android:textSize="@dimen/text_usual"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/presentName" />
 
     <EditText
         android:id="@+id/url"
@@ -63,13 +102,10 @@
         android:id="@+id/addPresentButton"
         style="@style/UsualButton"
         android:layout_marginStart="8dp"
-
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
         android:text="ADD Present"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintEnd_toEndOf="@id/url"
         app:layout_constraintStart_toStartOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

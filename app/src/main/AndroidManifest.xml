@@ -3,9 +3,6 @@
     package="com.example.presentator">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,13 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.PersonItem"></activity>
-        <activity android:name=".view.PresentAdding" />
-        <activity android:name=".view.auth.SignInActivity" />
-        <activity android:name=".view.auth.SignUpActivity" />
-        <activity android:name=".view.NewsItem" />
-        <activity android:name=".view.Profile" />
-        <activity android:name=".view.PeopleSearch">
+        <activity android:name=".modules.auth.signIn.SignInActivity"></activity>
+        <activity android:name=".modules.auth.signUp.SignUpActivity" />
+        <activity android:name=".modules.newsFeed.NewsItem" />
+        <activity android:name=".modules.addNew.PresentAdding" />
+        <activity android:name=".modules.profile.Profile">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <!-- FIXME что это за action, идея ругается если его нету -->
@@ -29,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.NewsFeed" />
+        <activity android:name=".modules.newsFeed.NewsFeedActivity" />
+
     </application>
 
 </manifest>

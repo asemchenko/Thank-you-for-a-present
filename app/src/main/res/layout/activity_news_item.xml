@@ -23,8 +23,10 @@
     <TextView
         android:id="@+id/creation_date_text_view"
         style="@style/TextView.Secondary"
+        android:textColor="@color/black"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/text_small_margin"
-        android:layout_toEndOf="@+id/author_nick_text_view"
+        android:layout_marginEnd="19dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="20 Dec" />
@@ -32,9 +34,13 @@
     <TextView
         android:id="@+id/present_name_text_view"
         style="@style/TextView.Primary.Header"
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/author_nick_text_view"
-        android:layout_marginTop="@dimen/text_small_margin"
-        android:layout_toEndOf="@id/profile_image_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
         android:text="Just present description" />
 
     <ImageView
@@ -49,22 +55,32 @@
         android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
+        android:id="@+id/news_item_linear_layout123"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/present_image_view"
+        android:layout_below="@+id/present_image_view"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="18dp"
         android:layout_toEndOf="@id/profile_image_view"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/collected_label_text_view"
+            android:id="@+id/news_item_tw_description"
             style="@style/TextView.Primary"
-            android:layout_alignParentStart="true"
-            android:text="Collected: " />
-
-        <TextView
-            android:id="@+id/money_collected_text_view"
-            style="@style/TextView.Primary"
-            android:layout_alignParentStart="true"
-            android:text="0/1000$" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/news_item_linear_layout123"
+            android:layout_alignParentStart="true" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/news_item_btn_gift"
+        style="@style/UsualButton"
+        android:layout_width="150dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/news_item_linear_layout123"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="82dp"
+        android:text="Gift this" />
 </RelativeLayout>
