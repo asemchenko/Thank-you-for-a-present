@@ -10,16 +10,22 @@
     tools:context=".modules.friends.FriendsActivity">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/person_recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/person_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="660dp" />
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/navbar"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:orientation="horizontal"
