@@ -11,20 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".modules.friends.UserItemActivity" />
         <activity android:name=".modules.auth.signUp.SignUpActivity" />
         <activity android:name=".modules.newsFeed.NewsItem" />
-        <activity android:name="com.example.presentator.deleteIt.Profile" />
         <activity android:name=".modules.addNew.PresentAdding" />
         <activity android:name=".modules.auth.signIn.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!--FIXME что это за action, идея ругается если его нету-->
+                <!-- FIXME что это за action, идея ругается если его нету -->
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.presentator.deleteIt.MainActivity" />
+        <activity android:name=".modules.friends.FriendsActivity">
+
+        </activity>
         <activity android:name=".modules.newsFeed.NewsFeedActivity" />
     </application>
 
