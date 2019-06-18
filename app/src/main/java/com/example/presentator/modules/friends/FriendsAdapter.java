@@ -93,16 +93,16 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.UserView
             nameTextView.setText(user.getName());
             genderTextView.setText(user.getGender().toString());
             if ((userFriendStatusMap.containsKey(user)) && (userFriendStatusMap.get(user).equals(Boolean.TRUE))) {
-                friendStatus.setImageResource(R.drawable.tick_button);
+                friendStatus.setImageResource(R.drawable.ic_check_black_24dp);
             } else {
-                friendStatus.setImageResource(R.drawable.add_friend);
+                friendStatus.setImageResource(R.drawable.ic_add_black_24dp);
                 friendStatus.setOnClickListener(view -> {
                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                     FirebaseDatabase.getInstance().getReference()
                             .child("friends")
                             .child(firebaseUser.getUid()).push().setValue(userUIDs.get(user));
                     userFriendStatusMap.put(user, true);
-                    friendStatus.setImageResource(R.drawable.tick_button);
+                    friendStatus.setImageResource(R.drawable.ic_check_black_24dp);
                 });
             }
             Picasso.with(itemView.getContext()).load(user.getImageURL()).into(userImageView);

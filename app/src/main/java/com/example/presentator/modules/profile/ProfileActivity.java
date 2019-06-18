@@ -1,6 +1,8 @@
 package com.example.presentator.modules.profile;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -11,7 +13,6 @@ import com.example.presentator.R;
 import com.example.presentator.common.Menu;
 import com.example.presentator.modules.friends.FriendsActivity;
 import com.example.presentator.modules.giftsList.GiftsListActivity;
-import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -23,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
         bindButtons();
         controller.loadUserInfo();
     }
@@ -41,7 +44,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         btnFriends.setOnClickListener(view -> {
             goToFriendsActivity();
         });
-
         Button giftsButton = (Button) findViewById(R.id.button_gifts);
         giftsButton.setOnClickListener(view -> {
             goToGiftsList();
@@ -60,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     }
 
     @Override
+
     public void setFullName(String fullName) {
         TextView fullNameTw = findViewById(R.id.profile_full_name_et);
         fullNameTw.setText(fullName);

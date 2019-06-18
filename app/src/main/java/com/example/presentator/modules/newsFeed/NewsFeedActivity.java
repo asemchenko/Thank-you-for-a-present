@@ -15,18 +15,18 @@ import com.example.presentator.model.entities.News;
 
 public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView {
     protected NewsController newsController;
-    private RecyclerView newsRecyclerView;
     protected NewsAdapter newsAdapter;
+    private RecyclerView newsRecyclerView;
     private ImageButton addPresentBtn;
     private ImageButton newsButton;
     private ImageButton accountButton;
-
 
     protected void createController() {
         newsController = new NewsController(this);
     }
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
@@ -37,6 +37,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(newsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         newsRecyclerView.addItemDecoration(dividerItemDecoration);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
+        getSupportActionBar().setTitle("News");
         newsController.start();
     }
 

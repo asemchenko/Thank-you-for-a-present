@@ -1,5 +1,7 @@
 package com.example.presentator.modules.friends;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,8 @@ public class FriendsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
         initRecyclerView();
         initAdapter();
+        getSupportActionBar().setTitle("Friends");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
         bindButtons();
         friendsController = new FriendsController(this, friendsAdapter);
         loadPeople();

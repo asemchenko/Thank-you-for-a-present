@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-
     private boolean hideGiftButton = false;
     private List<News> newsList = new LinkedList<>();
 
@@ -125,8 +124,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             creationDateTextView.setText(news.getGift().stringCreatedDate());
             Picasso.with(itemView.getContext()).load(news.getUser().getImageURL()).into(userImageView);
             Picasso.with(itemView.getContext()).load(news.getGift().getPresentImageURL()).into(presentImageView);
-
-
             if (news.getGift().getGiftedByUserUid() != null) {
                 disableGiftButton();
             } else {
