@@ -14,12 +14,12 @@ public class FriendsController {
         this.friendsService = new FriendsService(friendsAdapter);
     }
 
-    public void displayUserFriends(){
+    public void displayUserFriends() {
         friendsAdapter.clearItems();
         friendsService.getFriendsByUser(FirebaseAuth.getInstance().getCurrentUser());
     }
 
-    public void displayAllUsersByNickname(String nickname){
+    public void displayAllUsersByNickname(String nickname) {
         friendsAdapter.clearItems();
         friendsService.getUsersByNickname(nickname);
     }

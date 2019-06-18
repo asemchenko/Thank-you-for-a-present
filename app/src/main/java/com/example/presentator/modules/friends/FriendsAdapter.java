@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.UserViewHolder>  {
+public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.UserViewHolder> {
 
     private List<User> userList = new ArrayList<>();
     private Map<User, Boolean> userFriendStatusMap = new HashMap<>();
@@ -49,11 +49,11 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.UserView
         notifyDataSetChanged();
     }
 
-    public boolean isItemInList(User user){
+    public boolean isItemInList(User user) {
         return userList.contains(user);
     }
 
-    public void addUserUid(User user, String uid){
+    public void addUserUid(User user, String uid) {
         userUIDs.put(user, uid);
     }
 
@@ -92,7 +92,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.UserView
             nickTextView.setText(user.getNick());
             nameTextView.setText(user.getName());
             genderTextView.setText(user.getGender().toString());
-            if((userFriendStatusMap.containsKey(user)) && (userFriendStatusMap.get(user).equals(Boolean.TRUE))){
+            if ((userFriendStatusMap.containsKey(user)) && (userFriendStatusMap.get(user).equals(Boolean.TRUE))) {
                 friendStatus.setImageResource(R.drawable.tick_button);
             } else {
                 friendStatus.setImageResource(R.drawable.add_friend);

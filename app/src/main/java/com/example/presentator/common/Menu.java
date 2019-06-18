@@ -3,9 +3,9 @@ package com.example.presentator.common;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.presentator.modules.addNew.PresentAddingActivity;
 import com.example.presentator.modules.friends.FriendsActivity;
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
-import com.example.presentator.modules.addNew.PresentAddingActivity;
 
 public class Menu {
     public static void goToFeed(AppCompatActivity a) {

@@ -32,7 +32,7 @@ public class FriendsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void initAdapter(){
+    private void initAdapter() {
         friendsAdapter = new FriendsAdapter();
         recyclerView.setAdapter(friendsAdapter);
     }
@@ -46,11 +46,11 @@ public class FriendsActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.search_user, menu);
         MenuItem item = menu.findItem(R.id.search_user);
-        SearchView searchView = (SearchView)item.getActionView();
+        SearchView searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(query.equals("")){
+                if (query.equals("")) {
                     friendsController.displayUserFriends();
                 } else {
                     friendsController.displayAllUsersByNickname(query);

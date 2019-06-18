@@ -1,5 +1,6 @@
 package com.example.presentator.modules.addNew;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class PresentAddingActivity extends AppCompatActivity implements PresentA
 
         controller.requestMultiplePermissions();
 
-        imageView = (ImageView) findViewById(R.id.picture);
+        imageView = findViewById(R.id.picture);
         presentName = findViewById(R.id.presentName);
         description = findViewById(R.id.description);
 
@@ -113,7 +114,7 @@ public class PresentAddingActivity extends AppCompatActivity implements PresentA
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
+        if (resultCode == RESULT_CANCELED) {
             return;
         }
         if (requestCode == GALLERY) {

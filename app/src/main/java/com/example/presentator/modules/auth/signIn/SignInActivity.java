@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.presentator.R;
 import com.example.presentator.modules.auth.signUp.SignUpActivity;
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity implements SignInView {
     private SignInController controller = new SignInController(this);

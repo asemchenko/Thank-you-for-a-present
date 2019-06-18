@@ -42,7 +42,7 @@ public class FriendsService {
         });
     }
 
-    private void getFriendFromUIDAndPutItInUserList(String uid){
+    private void getFriendFromUIDAndPutItInUserList(String uid) {
         databaseReference.child("users_new").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,7 +66,7 @@ public class FriendsService {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     User user = d.getValue(User.class);
-                    if(user.getNick().contains(nickname)){
+                    if (user.getNick().contains(nickname)) {
                         friendsAdapter.addItem(Collections.singleton(user));
                         friendsAdapter.addUserUid(user, d.getKey());
                     }
