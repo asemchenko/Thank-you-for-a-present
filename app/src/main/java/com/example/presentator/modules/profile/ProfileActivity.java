@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.presentator.R;
 import com.example.presentator.common.Menu;
 import com.example.presentator.modules.friends.FriendsActivity;
+import com.example.presentator.modules.giftsList.GiftsListActivity;
+import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -39,10 +41,21 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         btnFriends.setOnClickListener(view -> {
             goToFriendsActivity();
         });
+
+        Button giftsButton = (Button) findViewById(R.id.button_gifts);
+        giftsButton.setOnClickListener(view -> {
+            goToGiftsList();
+        });
     }
 
     private void goToFriendsActivity() {
         Intent intent = new Intent(this, FriendsActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToGiftsList() {
+        Intent intent = new Intent(this, GiftsListActivity.class);
+        intent.putExtra("uid", controller.getUserUid());
         startActivity(intent);
     }
 

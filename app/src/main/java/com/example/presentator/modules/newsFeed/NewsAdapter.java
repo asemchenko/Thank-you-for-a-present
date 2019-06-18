@@ -22,7 +22,15 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
+    private boolean hideGiftButton = false;
     private List<News> newsList = new LinkedList<>();
+
+    public NewsAdapter(boolean hideGiftButton) {
+        this.hideGiftButton = hideGiftButton;
+    }
+
+    public NewsAdapter() {
+    }
 
     public void addItem(News news) {
         insertInSorted(news);
@@ -98,6 +106,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             giftThisButton = itemView.findViewById(R.id.news_item_btn_gift);
         }
 
+        private void prepareGiftButton(News news) {
+            if (hideGiftButton) {
+                giftThisButton.setVisibility(View.INVISIBLE);
+            } else {
+                giftThisButton.setOnClickListener(view -> {
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    news.getGift().setGiftedByUserUid(uid);
+                    FirebaseDatabase.getInstance().getReference().child("gifts").child(news.getUserId()).child(news.getGiftId()).setValue(news.getGift());
+                });
+            }
+        }
+
         public void bind(News news) {
             nickTextView.setText(news.getUser().getName());
             descriptionTextView.setText(news.getGift().getDescription());
@@ -106,18 +126,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             Picasso.with(itemView.getContext()).load(news.getUser().getImageURL()).into(userImageView);
             Picasso.with(itemView.getContext()).load(news.getGift().getPresentImageURL()).into(presentImageView);
 
+
             if (news.getGift().getGiftedByUserUid() != null) {
                 disableGiftButton();
             } else {
                 enableGiftButton();
             }
-            giftThisButton.setOnClickListener(view -> {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                news.getGift().setGiftedByUserUid(uid);
-                FirebaseDatabase.getInstance().getReference().child("gifts").child(news.getUserId()).child(news.getGiftId()).setValue(news.getGift());
-            });
+            prepareGiftButton(news);
         }
-
 
         private void disableGiftButton() {
             giftThisButton.setText("Already gifted");

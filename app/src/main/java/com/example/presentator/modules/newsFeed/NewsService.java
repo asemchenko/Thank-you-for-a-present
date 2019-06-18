@@ -23,7 +23,7 @@ public class NewsService {
         this.newsFeedView = newsFeedView;
     }
 
-    public void startObserveFriendEvents(String curUserUid) {
+    public void loadNews(String curUserUid) {
         db.child("friends").child(curUserUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -40,7 +40,7 @@ public class NewsService {
         });
     }
 
-    private void subscribeFriend(final String friendUid) {
+    protected void subscribeFriend(final String friendUid) {
         db.child("users_new").child(friendUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -45,4 +45,8 @@ public class ProfileController implements IProfileController {
         setUserIcon();
         setNickName();
     }
+
+    public String  getUserUid() {
+        return auth.getCurrentUser().getUid();
+    }
 }

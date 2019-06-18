@@ -26,6 +26,7 @@
         <activity android:name=".modules.profile.ProfileActivity" />
         <activity android:name=".modules.friends.FriendsActivity" />
         <activity android:name=".modules.newsFeed.NewsFeedActivity" />
+        <activity android:name=".modules.giftsList.GiftsListActivity" />
     </application>
 
 </manifest>

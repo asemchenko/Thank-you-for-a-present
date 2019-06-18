@@ -14,12 +14,17 @@ import com.example.presentator.common.Menu;
 import com.example.presentator.model.entities.News;
 
 public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView {
-    private NewsController newsController = new NewsController(this);
+    protected NewsController newsController;
     private RecyclerView newsRecyclerView;
-    private NewsAdapter newsAdapter;
+    protected NewsAdapter newsAdapter;
     private ImageButton addPresentBtn;
     private ImageButton newsButton;
     private ImageButton accountButton;
+
+
+    protected void createController() {
+        newsController = new NewsController(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +32,12 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
         setContentView(R.layout.activity_news_feed);
         initFields();
         bindButtons();
+        createController();
         initRecyclerView();
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(newsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         newsRecyclerView.addItemDecoration(dividerItemDecoration);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
-        newsController.startObserveFriends();
+        newsController.start();
     }
 
     private void bindButtons() {
@@ -49,8 +55,12 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
 
     private void initRecyclerView() {
         newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        newsAdapter = new NewsAdapter();
+        createAdapter();
         newsRecyclerView.setAdapter(newsAdapter);
+    }
+
+    protected void createAdapter() {
+        newsAdapter = new NewsAdapter();
     }
 
     @Override
