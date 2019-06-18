@@ -1,6 +1,5 @@
 package com.example.presentator.modules.addNew;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -52,12 +51,15 @@ public class PresentAddingActivity extends AppCompatActivity implements PresentA
                 showPictureDialog();
             }
         });
-        goToFeedImageButton = findViewById(R.id.present_add_btn_feed);
+
+
+        goToFeedImageButton = findViewById(R.id.profile_feed_btn);
         goToFeedImageButton.setOnClickListener(view -> {
             Menu.goToFeed(this);
         });
-        addPresentButton = findViewById(R.id.addPresentButton);
 
+
+        addPresentButton = findViewById(R.id.addPresentButton);
         addPresentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +68,12 @@ public class PresentAddingActivity extends AppCompatActivity implements PresentA
                 controller.addNewPresent(new Gift(presentNameString, descriptionString), getGiftImage());
             }
         });
+
+        ImageButton addPresentProfileButton = (ImageButton) findViewById(R.id.add_present_profile_btn);
+        addPresentProfileButton.setOnClickListener(view -> {
+            Menu.goToProfile(this);
+        });
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
     }
 

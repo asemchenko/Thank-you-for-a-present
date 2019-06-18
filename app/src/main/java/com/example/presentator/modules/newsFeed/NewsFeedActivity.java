@@ -43,8 +43,8 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
     private void initFields() {
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         addPresentBtn = findViewById(R.id.addPresentButton);
-        accountButton = findViewById(R.id.accountButton);
-        newsButton = findViewById(R.id.present_add_btn_feed);
+        accountButton = findViewById(R.id.account_button);
+        newsButton = findViewById(R.id.profile_feed_btn);
     }
 
     private void initRecyclerView() {

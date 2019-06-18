@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.example.presentator.R;
@@ -23,8 +24,24 @@ public class FriendsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
         initRecyclerView();
         initAdapter();
+        bindButtons();
         friendsController = new FriendsController(this, friendsAdapter);
         loadPeople();
+    }
+
+    private void bindButtons() {
+        ImageButton profileButton = (ImageButton) findViewById(R.id.add_present_profile_btn);
+        profileButton.setOnClickListener(view -> {
+            com.example.presentator.common.Menu.goToProfile(this);
+        });
+        ImageButton feedButton = (ImageButton) findViewById(R.id.profile_feed_btn);
+        feedButton.setOnClickListener(view -> {
+            com.example.presentator.common.Menu.goToFeed(this);
+        });
+        ImageButton addPresentButton = (ImageButton) findViewById(R.id.addPresentButton);
+        addPresentButton.setOnClickListener(view -> {
+            com.example.presentator.common.Menu.goToGiftAdding(this);
+        });
     }
 
     private void initRecyclerView() {

@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/add_present_icon_button" />
 
         <ImageButton
-            android:id="@+id/present_add_btn_feed"
+            android:id="@+id/profile_feed_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,7 +33,7 @@
             app:srcCompat="@drawable/news_icon_button" />
 
         <ImageButton
-            android:id="@+id/accountButton"
+            android:id="@+id/account_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
