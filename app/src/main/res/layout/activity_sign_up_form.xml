@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,10 +10,12 @@
     tools:context=".modules.auth.signUp.SignUpActivity">
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/sign_up_til_full_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/sign_up_et_full_name"
@@ -26,11 +28,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/sign_up_til_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_til_full_name">
 
         <EditText
             android:id="@+id/sign_up_et_username"
@@ -43,12 +47,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/sign_up_til_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-
+        app:layout_constraintTop_toBottomOf="@id/sign_up_til_username"
         >
 
         <EditText
@@ -62,13 +67,14 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/description_til"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         app:passwordToggleEnabled="true"
-
+        app:layout_constraintTop_toBottomOf="@id/sign_up_til_email"
         >
 
         <EditText
@@ -82,12 +88,14 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/sign_up_til_password_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/description_til">
 
         <EditText
             android:id="@+id/sign_up_et_password_confirmation"
@@ -104,7 +112,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_til_password_confirmation">
 
         <TextView
             android:layout_width="wrap_content"
@@ -130,9 +139,29 @@
             android:textSize="@dimen/text_usual" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/sign_up_tv_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:hint="Select your birthday"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_radio_group_gender">
+
+    </TextView>
+
     <Button
         android:id="@+id/sign_up_btn_sign_up"
         style="@style/UsualButton"
-        android:layout_marginTop="60dp"
-        android:text="Join us" />
-</LinearLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Join us"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
