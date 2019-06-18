@@ -7,48 +7,9 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.example.presentator.modules.profile.Profile">
+    tools:context="com.example.presentator.modules.profile.ProfileActivity">
 
-    <LinearLayout
-        android:id="@+id/navbar"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/addPresentButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/add_present_icon_button" />
-
-        <ImageButton
-            android:id="@+id/present_add_btn_feed"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/news_icon_button" />
-
-        <ImageButton
-            android:id="@+id/accountButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/account_icon_button" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/profile_image"
@@ -58,7 +19,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
 
@@ -70,6 +31,7 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/profile_full_name_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -80,6 +42,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/profile_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -115,13 +78,14 @@
                 android:src="@drawable/ic_email_black_24dp" />
 
             <TextView
+                android:id="@+id/profile_email_tw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Wiliam@gmail.com"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -137,14 +101,15 @@
                 android:src="@drawable/ic_content_paste_black_24dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/profile_birthday_tw"
 
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="26.12.1444"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -159,6 +124,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="28dp"
         android:text="Friends"
+        app:layout_constraintBottom_toTopOf="@id/navbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -169,7 +135,48 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="28dp"
         android:text="Gifts"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/navbar"
         app:layout_constraintEnd_toStartOf="@+id/button_friends"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/profile_add_present_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/add_present_icon_button" />
+
+        <ImageButton
+            android:id="@+id/profile_feed_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/news_icon_button" />
+
+        <ImageButton
+            android:id="@+id/add_present_profile_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/account_icon_button" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

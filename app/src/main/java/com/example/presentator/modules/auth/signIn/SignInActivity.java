@@ -10,16 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.presentator.R;
-import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 import com.example.presentator.modules.auth.signUp.SignUpActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 
 public class SignInActivity extends AppCompatActivity implements SignInView {
-
-    private FirebaseAuth auth;
-    private EditText emailEt;
-    private EditText passwordEt;
+    private SignInController controller = new SignInController(this);
     private Button signInBtn;
     private Button signUpBtn;
 
@@ -29,14 +24,11 @@ public class SignInActivity extends AppCompatActivity implements SignInView {
         setContentView(R.layout.activity_sign_in_form);
         getSupportActionBar().setTitle("Join Presentator");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5F8109")));
-        auth = FirebaseAuth.getInstance();
         initWidgetFields();
         bindButtons();
     }
 
     private void initWidgetFields() {
-        emailEt = findViewById(R.id.presentName);
-        passwordEt = findViewById(R.id.description);
         signInBtn = findViewById(R.id.btn_sign_in);
         signUpBtn = findViewById(R.id.addPresentButton);
     }
@@ -49,10 +41,7 @@ public class SignInActivity extends AppCompatActivity implements SignInView {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            goToFeed();
-        }
+        controller.checkOnStart();
     }
 
 
@@ -68,24 +57,18 @@ public class SignInActivity extends AppCompatActivity implements SignInView {
     }
 
     private void signIn() {
-        String email = emailEt.getText().toString().trim();
-        String password = passwordEt.getText().toString().trim();
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                goToFeed();
-            } else {
-                Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_SHORT).show();
-            }
-        });
+        String email = ((EditText) findViewById(R.id.presentName)).getText().toString().trim();
+        String password = ((EditText) findViewById(R.id.description)).getText().toString().trim();
+        controller.startLogin(email, password);
     }
 
     @Override
     public void endLogin() {
-        //todo
+        goToFeed();
     }
 
     @Override
     public void showError(String error) {
-        //todo
+        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
     }
 }

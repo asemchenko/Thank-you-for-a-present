@@ -13,13 +13,9 @@ import android.widget.Toast;
 import com.example.presentator.R;
 import com.example.presentator.model.entities.User;
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpActivity extends AppCompatActivity {
-
+public class SignUpActivity extends AppCompatActivity implements SignUpView {
+    private SignUpController controller = new SignUpController(this);
     private EditText fullNameEt;
     private EditText usernameEt;
     private EditText emailEt;
@@ -55,7 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void signUp() {
-        // FIXME wrap all below to User class
         String password = passwordEt.getText().toString().trim();
         String passwordConfirmation = passwordConfirmationEt.getText().toString().trim();
         if (!password.equals(passwordConfirmation)) {
@@ -71,22 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
         String username = usernameEt.getText().toString().trim();
         String email = emailEt.getText().toString().trim();
         User user = new User(fullName, username, gender);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                FirebaseUser currentUser = auth.getCurrentUser();
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference users = db.getReference("users_new"); // FIXME tmp rename
-                users.child(currentUser.getUid()).setValue(user);
-                goToFeed();
-            } else {
-                String cause = "";
-                if (task.getException() != null) {
-                    cause = task.getException().getLocalizedMessage();
-                }
-                showErrMsgWithToast("Sorry, did not work: " + cause);
-            }
-        });
+        controller.signUp(user, email, password);
     }
 
     private void showGenderRequiredError() {
@@ -114,9 +94,15 @@ public class SignUpActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    private void goToFeed() {
+    @Override
+    public void endSignUp() {
         Intent intent = new Intent(this, NewsFeedActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void showError(String errorMsg) {
+        showErrMsgWithToast(errorMsg);
     }
 }

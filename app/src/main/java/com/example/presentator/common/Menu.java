@@ -3,8 +3,10 @@ package com.example.presentator.common;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.presentator.modules.addNew.PresentAddingActivity;
+import com.example.presentator.modules.friends.FriendsActivity;
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
-import com.example.presentator.modules.addNew.PresentAdding;
+import com.example.presentator.modules.profile.ProfileActivity;
 
 public class Menu {
     public static void goToFeed(AppCompatActivity a) {
@@ -14,13 +16,14 @@ public class Menu {
     }
 
     public static void goToGiftAdding(AppCompatActivity a) {
-        Intent intent = new Intent(a.getApplicationContext(), PresentAdding.class);
+        Intent intent = new Intent(a.getApplicationContext(), PresentAddingActivity.class);
         a.startActivity(intent);
         a.finish();
     }
 
     public static void goToProfile(AppCompatActivity a) {
-        // TODO
-//        new Intent(a.getApplicationContext(), )
+        Intent intent = new Intent(a.getApplicationContext(), ProfileActivity.class);
+        a.startActivity(intent);
+        a.finish();
     }
 }

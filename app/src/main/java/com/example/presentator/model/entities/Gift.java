@@ -31,6 +31,12 @@ public class Gift {
     public Gift() {
     }
 
+    public Gift(String presentName, String description) {
+        this.presentName = presentName;
+        this.description = description;
+        this.creationDate = new Date().getTime();
+    }
+
     public String getPresentName() {
         return presentName;
     }
@@ -70,7 +76,7 @@ public class Gift {
     public void setPresentImageURL(String presentImageURL) {
         this.presentImageURL = presentImageURL;
     }
-    
+
     public String stringCreatedDate() {
         SimpleDateFormat.getInstance();
         DateFormat dateFormat = SimpleDateFormat.getInstance();// FIXME new SimpleDateFormat("yyyy-mm-dd hh:mm");
