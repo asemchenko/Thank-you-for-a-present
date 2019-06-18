@@ -3,6 +3,7 @@ package com.example.presentator.common;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.presentator.modules.friends.FriendsActivity;
 import com.example.presentator.modules.newsFeed.NewsFeedActivity;
 import com.example.presentator.modules.addNew.PresentAddingActivity;
 
@@ -20,7 +21,8 @@ public class Menu {
     }
 
     public static void goToProfile(AppCompatActivity a) {
-        // TODO
-//        new Intent(a.getApplicationContext(), )
+        Intent intent = new Intent(a.getApplicationContext(), FriendsActivity.class);
+        a.startActivity(intent);
+        a.finish();
     }
 }

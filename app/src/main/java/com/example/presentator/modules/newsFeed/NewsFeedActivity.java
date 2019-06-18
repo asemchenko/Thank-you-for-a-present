@@ -19,6 +19,7 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
     private NewsAdapter newsAdapter;
     private ImageButton addPresentBtn;
     private ImageButton newsButton;
+    private ImageButton accountButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,14 @@ public class NewsFeedActivity extends AppCompatActivity implements NewsFeedView 
 
     private void bindButtons() {
         addPresentBtn.setOnClickListener(view -> Menu.goToGiftAdding(this));
+        accountButton.setOnClickListener(view -> Menu.goToProfile(this));
+
     }
 
     private void initFields() {
         newsRecyclerView = findViewById(R.id.news_recycler_view);
         addPresentBtn = findViewById(R.id.addPresentButton);
+        accountButton = findViewById(R.id.accountButton);
         newsButton = findViewById(R.id.present_add_btn_feed);
     }
 
