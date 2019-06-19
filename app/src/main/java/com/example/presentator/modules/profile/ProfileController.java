@@ -30,6 +30,11 @@ public class ProfileController implements IProfileController {
 
     public void loadUserInfo() {
         profileService.loadUserInfo(auth.getCurrentUser().getUid());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void uploadAvatar(Bitmap bitmap) {
